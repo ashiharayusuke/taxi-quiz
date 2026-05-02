@@ -344,7 +344,7 @@ function restartQuiz() {
 }
 
 shareBtn.addEventListener("click", () => {
-  const text = `#タクシー業界用語クイズ で${shuffledQuiz.length}問中 ${score}問正解しました！%0Aあなたも挑戦！`;
+  const text = `タクシー業界用語クイズで${shuffledQuiz.length}問中 ${score}問正解しました！%0Aあなたも挑戦！`;
   const url = encodeURIComponent(window.location.href);
   window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, "_blank");
 });
