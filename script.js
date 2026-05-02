@@ -245,7 +245,7 @@ const QUIZ_LIMIT = 10;
 const startBox = document.getElementById("start-box");
 const quizBox = document.getElementById("quiz-box");
 const resultBox = document.getElementById("result-box");
-
+const backBtn = document.getElementById("back-btn");
 const startBtn = document.getElementById("start-btn");
 const allStartBtn = document.getElementById("all-start-btn");
 const questionEl = document.getElementById("question");
@@ -264,6 +264,12 @@ let quizLimit = QUIZ_LIMIT;
 
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
+}
+
+function backToStart() {
+  quizBox.classList.add("hidden");
+  resultBox.classList.add("hidden");
+  startBox.classList.remove("hidden");
 }
 
 function startQuiz(allMode = false) {
@@ -345,3 +351,4 @@ shareBtn.addEventListener("click", () => {
 
 startBtn.addEventListener("click", () => startQuiz(false));
 allStartBtn.addEventListener("click", () => startQuiz(true));
+backBtn.addEventListener("click", backToStart);
