@@ -49,6 +49,7 @@ h1, h2 {
 #next-btn,
 #start-btn,
 #all-start-btn,
+#back-btn,
 #share-btn,
 .link-btn {
   display: block;
@@ -130,6 +131,11 @@ h1, h2 {
 
 #next-btn:hover, #start-btn:hover, .link-btn:hover {
   background: #1d4ed8;
+}
+
+#back-btn {
+  background: #475569;
+  color: white;
 }
 
 #share-btn {
