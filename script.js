@@ -235,16 +235,13 @@ const quizData = [
   }
 ];
 
-let shuffledQuiz = [];
-let currentQuiz = 0;
-let score = 0;
-
 const QUIZ_LIMIT = 10;
 const startBox = document.getElementById("start-box");
 const quizBox = document.getElementById("quiz-box");
 const resultBox = document.getElementById("result-box");
 
 const startBtn = document.getElementById("start-btn");
+const allStartBtn = document.getElementById("all-start-btn");
 const questionEl = document.getElementById("question");
 const choicesEl = document.getElementById("choices");
 const answerResultEl = document.getElementById("answer-result");
@@ -254,12 +251,20 @@ const scoreEl = document.getElementById("score");
 const shareBtn = document.getElementById("share-btn");
 const questionNumberEl = document.getElementById("question-number");
 
+let shuffledQuiz = [];
+let currentQuiz = 0;
+let score = 0;
+let quizLimit = QUIZ_LIMIT;
+
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
 
-function startQuiz() {
-  shuffledQuiz = shuffle([...quizData]).slice(0, QUIZ_LIMIT);  currentQuiz = 0;
+function startQuiz(allMode = false) {
+  quizLimit = allMode ? quizData.length : QUIZ_LIMIT;
+  shuffledQuiz = shuffle([...quizData]).slice(0, quizLimit);
+
+  currentQuiz = 0;
   score = 0;
 
   startBox.classList.add("hidden");
@@ -268,9 +273,8 @@ function startQuiz() {
 
   loadQuiz();
 }
-
 function loadQuiz() {
-  questionNumberEl.textContent = `第${currentQuiz + 1}問 `;
+　questionNumberEl.textContent = `第${currentQuiz + 1}問 / ${quizLimit}問`;
   nextBtn.disabled = true;
   answerResultEl.textContent = "";
   explanationEl.textContent = "";
@@ -318,7 +322,7 @@ nextBtn.addEventListener("click", () => {
 function showResult() {
   quizBox.classList.add("hidden");
   resultBox.classList.remove("hidden");
-  scoreEl.textContent = `${QUIZ_LIMIT}問中 ${score}問正解！`;
+  scoreEl.textContent = `${quizLimit}問中 ${score}問正解！`;
 }
 
 function restartQuiz() {
@@ -333,4 +337,5 @@ shareBtn.addEventListener("click", () => {
   window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, "_blank");
 });
 
-startBtn.addEventListener("click", startQuiz);
+startBtn.addEventListener("click", () => startQuiz(false));
+allStartBtn.addEventListener("click", () => startQuiz(true));
