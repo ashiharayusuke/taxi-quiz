@@ -1,0 +1,169 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  margin: 0;
+  padding: 20px;
+  color: #fff;
+}
+
+.container {
+  max-width: 720px;
+  margin: 40px auto;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#start-box p,
+#score,
+#explanation {
+  text-align: center;
+  color: #cbd5e1;
+}
+
+.hidden {
+  display: none;
+}
+
+#question-number {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  margin-bottom: 10px;
+}
+
+#question {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.6;
+  margin: 16px 0 20px;
+}
+
+.choice-btn,
+#next-btn,
+#start-btn,
+#share-btn,
+.link-btn {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  width: 280px;
+  margin: 20px auto;
+  transition: all 0.2s ease;
+}
+
+.link-nik {
+  background: black;
+  color: white;
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  width: 280px;
+  margin: 20px auto;
+  transition: all 0.2s ease;
+}
+
+.link-you {
+  background: red;
+  color: white;
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  width: 280px;
+  margin: 20px auto;
+  transition: all 0.2s ease;
+}
+
+.choice-btn {
+  background: #1e293b;
+  color: #fff;
+  border: 1px solid #334155;
+}
+
+.choice-btn:hover {
+  background: #334155;
+  transform: translateY(-1px);
+}
+
+.correct {
+  background: #15803d !important;
+  color: #fff;
+}
+
+.wrong {
+  background: #b91c1c !important;
+  color: #fff;
+}
+
+#next-btn, #start-btn, .link-btn {
+  background: #2563eb;
+  color: white;
+}
+
+#next-btn:hover, #start-btn:hover, .link-btn:hover {
+  background: #1d4ed8;
+}
+
+#share-btn {
+  background: #b0b0b0;
+  color: white;
+  display: green;
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  width: 280px;
+  margin: 20px auto;
+  transition: all 0.2s ease;
+}
+
+#share-btn:hover {
+  background: #000;
+}
+
+#answer-result {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#explanation {
+  margin-top: 12px;
+  line-height: 1.8;
+  background: rgba(255,255,255,0.04);
+  padding: 14px;
+  border-radius: 12px;
+}

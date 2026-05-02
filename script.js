@@ -1,0 +1,336 @@
+const quizData = [
+  {
+    question: "「あんこ」とは？",
+    choices: ["駅待機から出られない事", "乗客を乗せず移動中", "休憩中", "長距離移動の乗客"],
+    answer: 0,
+    explanation: "駅待機のレーン等で前後に挟まれて出られない事。「たこつぼ」とも言う。"
+  },
+  {
+    question: "「行灯」とは？",
+    choices: ["客を指定場所へ迎えに行くこと", "社名入りの表示灯", "乗客の足元を照らす光", "休み明けの出勤"],
+    answer: 1,
+    explanation: "タクシーのルーフに付いているタクシーのサイン。天井灯ともいう。タクシーは必ずこれを装着しなければならない。"
+  },
+  {
+    question: "「付け待ち」とは？",
+    choices: ["駅や乗り場で待機すること", "予約客専用待機", "洗車待ち", "点呼待ち"],
+    answer: 0,
+    explanation: "付け待ちは、駅・病院・ホテルなど決まった乗り場で乗客を待つ営業方法。"
+  },
+  {
+    question: "「赤信号」とは？",
+    choices: ["休憩中", "取り締まり", "ノルマ未達成", "駅で乗客を待っている状態"],
+    answer: 1,
+    explanation: "警察による交通取締。"
+  },
+  {
+    question: "「アサレン」とは？",
+    choices: ["早朝の営業", "詰所の打ち合わせ", "深夜明けで営業から上がること", "乗務前に洗車の当番になること"],
+    answer: 3,
+    explanation: "乗務日の朝、乗務前に洗車の当番になること。"
+  },
+  {
+    question: "「コロ」とは？",
+    choices: ["新規客の開拓", "近距離客", "ガソリン切れが近いこと", "古いタクシーの総称"],
+    answer: 1,
+    explanation: "近距離客のこと。「タイヤが少し転がるだけ」という意味から。"
+  },
+  {
+    question: "「オバケ」とは？",
+    choices: ["無灯走行を咎めること", "街中を走って客を探す営業", "長距離客", "二人乗りの客"],
+    answer: 2,
+    explanation: "長距離客のこと。思いがけない高売上客。"
+  },
+  {
+    question: "「枝」とは？",
+    choices: ["収入", "細い道・脇道", "病欠した際の交代要員", "客を取れず仕事にならないこと"],
+    answer: 1,
+    explanation: "幹線道路から外れた細い道・脇道。「枝に入る」＝裏道に入る。"
+  },
+  {
+    question: "「小さな落し物」とは？",
+    choices: ["携帯/スマホ", "小銭", "自損事故", "凶器"],
+    answer: 1,
+    explanation: "犯人が使用した凶器。"
+  },
+  {
+    question: "「パンダさん」とは？",
+    choices: ["長距離利用客", "交通取締", "子供連れ", "飲酒客"],
+    answer: 1,
+    explanation: "交通取締などで、その場所でやってることを無線で知らせるときに使う。"
+  },
+  {
+    question: "「坊主」とは？",
+    choices: ["空車", "営業終了", "休憩開始", "給油"],
+    answer: 0,
+    explanation: "空車の状態で流し続けている状態、もしくは一度もお客さんを乗せられない状態のこと。坊主の容姿である「もう毛が無い」→「儲けがない」というダジャレから転じた言葉。飲食業や釣りなどでもよく使われる言葉です。"
+  },
+  {
+    question: "「マグロ」とは？",
+    choices: ["事故による通行止め", "営業所へ戻る", "流し専門のドライバー", "チップを出してくれる客"],
+    answer: 2,
+    explanation: "付待ちが苦手で常に走り回る流し専門のドライバー。マグロが常に泳いでいないと窒息してしまうことから流し専門のドライバーをマグロと呼んでいる。"
+  },
+  {
+    question: "「実車」とは？",
+    choices: ["乗客を乗せて走行中", "空車", "回送", "整備中"],
+    answer: 0,
+    explanation: "実車は乗客を乗せて運賃が発生している営業状態。"
+  },
+  {
+    question: "「空車」とは？",
+    choices: ["休憩中", "乗客なしで営業可能", "営業終了", "予約済み"],
+    answer: 1,
+    explanation: "空車は乗客がおらず、すぐに営業可能な状態。"
+  },
+  {
+    question: "「お茶」とは？",
+    choices: ["ドタキャン", "整備依頼", "休憩申請", "高速申請"],
+    answer: 0,
+    explanation: "無線配車されて、迎えに行ってもキャンセルや利用者がいないこと。"
+  },
+  {
+    question: "「○珍良好」とは？",
+    choices: ["短距離乗車", "暴走族", "相乗り", "芸能人の乗車"],
+    answer: 1,
+    explanation: "前方に進路妨害の車輌つまり（暴走族）が現れた場合を指す。"
+  },
+  {
+    question: "「お手上げ」とは？",
+    choices: ["相乗り", "客を見つける", "客が全くいない状態", "渋滞"],
+    answer: 1,
+    explanation: "流しや空車で駅などに向かう途中にお客様を見つけること。"
+  },
+  {
+    question: "「エントツ」とは？",
+    choices: ["運賃を着服する不正行為", "営業終了", "無賃客確認", "売上精算"],
+    answer: 0,
+    explanation: "タクシーメーターを正しく操作しないで、運賃をドライバーが着服する不正行為のこと。昔のメーター器は空車表示が旗のように上に立っていた。これを横に倒すと作動を開始する。旗が立ったままなのでエントツという。目的地に着くと「うっかりしてメーターを倒すのを忘れました、お客さんいつも幾らくらいで来ますか」などと詫びを云う。利用者もいつもの金額よりまけてもらったので問題としない。この行為は見つかれば窃盗罪となる。今はボタンを押す方式になって旗はなくなったのに、いまだに「エントツ」とか「メーター不倒」という言葉が使われている。"
+  },
+  {
+    question: "「ハンドル」とは？",
+    choices: ["料金メーター", "無線機", "売上帳", "運転そのもの"],
+    answer: 3,
+    explanation: "ハンドルは現場で運転業務そのものを指す言い回し。"
+  },
+  {
+    question: "「赤チン」とは？",
+    choices: ["赤信号", "赤字営業", "事故車", "高速道路"],
+    answer: 1,
+    explanation: "赤チンは売上が伸びず赤字気味の営業を指す俗称。"
+  },
+  {
+    question: "「青タン」とは？",
+    choices: ["早朝勤務", "深夜時間帯営業", "新人教育", "雨天営業"],
+    answer: 1,
+    explanation: "青タンは22時から5時までの深夜帯の割増営業時間でのメーターを指す俗称。深夜割増料金になると、メーターが青くなることから。"
+  },
+  {
+    question: "「大事な忘れ物」とは？",
+    choices: ["免許証", "車のキー", "事件に関した連絡", "財布"],
+    answer: 2,
+    explanation: "事件に関した連絡を指す隠語。"
+  },
+  {
+    question: "「水溜り」とは？",
+    choices: ["行き止まり", "自動車整備", "釣銭のストック",  "速度違反取締り"],
+    answer: 3,
+    explanation: "無線室で使われる「速度違反取締り」を示す言葉。"
+  },
+  {
+    question: "「横持ち」とは？",
+    choices: ["近距離輸送", "荷物運搬", "横断移動", "相乗り"],
+    answer: 0,
+    explanation: "横持ちは比較的短距離・近場の乗車を指す俗称。"
+  },
+  {
+    question: "「まんしゅう」とは？",
+    choices: ["長距離乗車", "大型車", "長時間休憩", "長時間待機"],
+    answer: 0,
+    explanation: "1万円以上の良い仕事、大当たり。"
+  },
+  {
+    question: "「ワンメーター」とは？",
+    choices: ["最低料金区間", "一人客", "単独勤務", "一台配車"],
+    answer: 0,
+    explanation: "ワンメーターは初乗り料金内で収まる短距離利用。"
+  },
+  {
+    question: "「ゾンビ」とは？",
+    choices: ["車検", "飲酒客", "ガソリン切れ", "大量の乗車待ち客"],
+    answer: 3,
+    explanation: "主に金曜や連休前、さらによくあるパターンとして12月などの忘年会・御用納めシーズンの深夜で、タクシーが捕まらないお客様があちらこちらで乗車しようと手を上げている状態から。"
+  },
+  {
+    question: "「とぐろ巻く」とは？",
+    choices: ["長距離乗車", "駅構内に入る為停車している状態", "エンスト状態", "タイヤがパンクした状態"],
+    answer: 1,
+    explanation: "駅構内等のタクシー乗り場でスペースに入りきれず構内に入る為停車している状態。○○駅はとぐろ巻いてる。"
+  },
+  {
+    question: "「寝かせ」とは？",
+    choices: ["仮眠", "車両待機", "売上未処理", "客待ち放置"],
+    answer: 2,
+    explanation: "寝かせは未処理の売上や伝票を翌日に回すことを指す俗称。"
+  },
+  {
+    question: "「荷崩れ」とは？",
+    choices: ["荷物の積み直し", "長距離客を逃すこと", "釣銭不足", "忘れ物の散乱"],
+    answer: 1,
+    explanation: "荷崩れは見込んでいた長距離客や高単価客を他車に取られることを指す現場用語。"
+  },
+  {
+    question: "「20」とは？",
+    choices: ["20分休憩", "事故発生", "トイレ休憩", "暴力団"],
+    answer: 3,
+    explanation: "暴力団のお客様…ヤクザ=893=8+9+3=20・・・です。"
+  },
+  {
+    question: "「ネギ」とは？",
+    choices: ["新人乗務員", "無賃乗車客", "客からの苦情", "深夜の酔客"],
+    answer: 2,
+    explanation: "お客さんよりの苦情のことを、京都の九条地域で作られている有名な九条ネギにかけていう言葉。"
+  },
+  {
+    question: "「脳梗塞」とは？",
+    choices: ["居眠り運転", "仕事の出来が悪い日", "無線故障", "泥酔客"],
+    answer: 1,
+    explanation: "高速に乗るようなイイ仕事がなかった日を言い、NO高速から『今日は脳梗塞になっちゃったよ』などと使う。"
+  },
+  {
+    question: "「ノコギリ」とは？",
+    choices: ["蛇行運転", "客を降ろして戻ること", "客の取り合い", "違法改造車"],
+    answer: 1,
+    explanation: "お客様を降ろして、空車になった先で無線が入り、また自分の営業エリアに戻ること。乗務員にとってこれほどおいしい仕事はない。"
+  },
+  {
+    question: "「やっこ」とは？",
+    choices: ["迷惑ドライバー", "無賃客", "警察官", "新人教育係"],
+    answer: 0,
+    explanation: "会社の規則・乗務員としての常識を無視して、やりたい放題の迷惑をかけてまで売上を揚げているドライバーのこと。"
+  },
+  {
+    question: "「夜ガラス」とは？",
+    choices: ["夜勤務を強いる人", "深夜の女性客", "夜だけ売上が良い車", "夜の繁華街専門客"],
+    answer: 0,
+    explanation: "夜勤務を強いる人のこと。"
+  },
+  {
+    question: "「よっぱ」とは？",
+    choices: ["酔客", "夜勤明け乗務員", "無線係", "長距離客"],
+    answer: 0,
+    explanation: "よっぱは酔っ払い客の略称です。深夜帯によく使われる現場用語。"
+  },
+  {
+    question: "「弱い手」とは？",
+    choices: ["運転が荒い", "売上になりにくい営業", "短距離客", "新人の接客"],
+    answer: 1,
+    explanation: "いつも営収の低い乗務員のこと。その逆は「強い手（こわいて）」と言う。"
+  },
+  {
+    question: "「落下物に注意」とは？",
+    choices: ["道路障害物注意", "ネズミとり注意", "荷物落下注意", "看板落下注意"],
+    answer: 1,
+    explanation: "無線の隠語でネズミとりをしているときなどを表す。"
+  }
+];
+
+let shuffledQuiz = [];
+let currentQuiz = 0;
+let score = 0;
+
+const QUIZ_LIMIT = 10;
+const startBox = document.getElementById("start-box");
+const quizBox = document.getElementById("quiz-box");
+const resultBox = document.getElementById("result-box");
+
+const startBtn = document.getElementById("start-btn");
+const questionEl = document.getElementById("question");
+const choicesEl = document.getElementById("choices");
+const answerResultEl = document.getElementById("answer-result");
+const explanationEl = document.getElementById("explanation");
+const nextBtn = document.getElementById("next-btn");
+const scoreEl = document.getElementById("score");
+const shareBtn = document.getElementById("share-btn");
+const questionNumberEl = document.getElementById("question-number");
+
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+
+function startQuiz() {
+  shuffledQuiz = shuffle([...quizData]).slice(0, QUIZ_LIMIT);  currentQuiz = 0;
+  score = 0;
+
+  startBox.classList.add("hidden");
+  resultBox.classList.add("hidden");
+  quizBox.classList.remove("hidden");
+
+  loadQuiz();
+}
+
+function loadQuiz() {
+  questionNumberEl.textContent = `第${currentQuiz + 1}問 `;
+  nextBtn.disabled = true;
+  answerResultEl.textContent = "";
+  explanationEl.textContent = "";
+
+  const quiz = shuffledQuiz[currentQuiz];
+  questionEl.textContent = quiz.question;
+  choicesEl.innerHTML = "";
+
+  quiz.choices.forEach((choice, index) => {
+    const btn = document.createElement("button");
+    btn.textContent = choice;
+    btn.classList.add("choice-btn");
+    btn.onclick = () => selectAnswer(btn, index, quiz.answer, quiz.explanation);
+    choicesEl.appendChild(btn);
+  });
+}
+
+function selectAnswer(button, selected, correct, explanation) {
+  const buttons = document.querySelectorAll(".choice-btn");
+  buttons.forEach(btn => btn.disabled = true);
+
+  if (selected === correct) {
+    button.classList.add("correct");
+    answerResultEl.textContent = "正解！";
+    score++;
+  } else {
+    button.classList.add("wrong");
+    buttons[correct].classList.add("correct");
+    answerResultEl.textContent = "不正解…";
+  }
+
+  explanationEl.textContent = explanation;
+  nextBtn.disabled = false;
+}
+
+nextBtn.addEventListener("click", () => {
+  currentQuiz++;
+  if (currentQuiz < shuffledQuiz.length) {
+    loadQuiz();
+  } else {
+    showResult();
+  }
+});
+
+function showResult() {
+  quizBox.classList.add("hidden");
+  resultBox.classList.remove("hidden");
+  scoreEl.textContent = `${QUIZ_LIMIT}問中 ${score}問正解！`;
+}
+
+function restartQuiz() {
+  startBox.classList.remove("hidden");
+  quizBox.classList.add("hidden");
+  resultBox.classList.add("hidden");
+}
+
+shareBtn.addEventListener("click", () => {
+  const text = `クイズで${shuffledQuiz.length}問中 ${score}問正解しました！%0Aあなたも挑戦！`;
+  const url = encodeURIComponent(window.location.href);
+  window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, "_blank");
+});
+
+startBtn.addEventListener("click", startQuiz);

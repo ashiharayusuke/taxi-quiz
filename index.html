@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>タクシー業界用語クイズ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- 開始画面 -->
+    <div id="start-box">
+      <h1>タクシー業界用語クイズ！</h1>
+      <p>全10問のクイズへの回答を目指しましょう！</p>
+      <button id="start-btn">Start</button>
+      <a href="https://live.nicovideo.jp/watch/user/55255188" target="_blank" class="link-nik">ニコニコ動画 ラジオ七輪 生放送</a>
+      <a href="https://www.youtube.com/channel/UCNRG_yf91IfQPIvxgpjMjnQ" target="_blank" class="link-you">YouTube ラジオ七輪 アーカイブ</a>
+   </div>
+
+    <!-- クイズ画面 -->
+<div id="quiz-box" class="hidden">
+  <p id="question-number"></p>
+  <p id="question"></p>
+  <div id="choices"></div>
+
+  <p id="answer-result"></p>
+  <p id="explanation"></p>
+
+  <button id="next-btn" disabled>次へ</button>
+</div>
+
+    <!-- 結果画面 -->
+    <div id="result-box" class="hidden">
+      <h2>結果</h2>
+      <p id="score"></p>
+      <button id="start-btn" onclick="restartQuiz()">もう一度遊ぶ</button>
+	<button id="share-btn">Xで共有</button>
+      <a href="https://live.nicovideo.jp/watch/user/55255188" target="_blank" class="link-nik">ニコニコ動画 ラジオ七輪 生放送</a>
+      <a href="https://www.youtube.com/channel/UCNRG_yf91IfQPIvxgpjMjnQ" target="_blank" class="link-you">YouTube ラジオ七輪 アーカイブ</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
