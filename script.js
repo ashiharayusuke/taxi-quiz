@@ -280,7 +280,7 @@ function startQuiz(allMode = false) {
   loadQuiz();
 }
 function loadQuiz() {
-　questionNumberEl.textContent = `第${currentQuiz + 1}問 / ${quizLimit}問`;
+　questionNumberEl.textContent = `第${currentQuiz + 1}問 / ${quizLimit+1}問`;
   nextBtn.disabled = true;
   answerResultEl.textContent = "";
   explanationEl.textContent = "";
