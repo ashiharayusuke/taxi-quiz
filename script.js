@@ -343,12 +343,14 @@ function restartQuiz() {
   resultBox.classList.add("hidden");
 }
 
+const shareBtn = document.getElementById("share-btn");
+
 shareBtn.addEventListener("click", () => {
   const text = encodeURIComponent(
-    `#タクシー業界用語クイズ で${shuffledQuiz.length}問中${score}問正解しました！\nあなたも挑戦！`
+    `タクシー業界用語クイズで${shuffledQuiz.length}問中${score}問正解しました！\nあなたも挑戦！`
   );
 
-  const url = encodeURIComponent(window.location.href);
+  const url = encodeURIComponent("https://あなたのGitHubPagesURL");
 
   window.open(
     `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
