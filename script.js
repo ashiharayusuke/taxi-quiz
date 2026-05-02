@@ -56,7 +56,7 @@ const quizData = [
   {
     question: "「小さな落し物」とは？",
     choices: ["携帯/スマホ", "小銭", "自損事故", "凶器"],
-    answer: 1,
+    answer: 3,
     explanation: "犯人が使用した凶器。"
   },
   {
@@ -120,10 +120,10 @@ const quizData = [
     explanation: "ハンドルは現場で運転業務そのものを指す言い回し。"
   },
   {
-    question: "「赤チン」とは？",
-    choices: ["赤信号", "赤字営業", "事故車", "高速道路"],
+    question: "「赤ランプ」とは？",
+    choices: ["赤信号", "タクシー不足", "事故車", "赤字営業"],
     answer: 1,
-    explanation: "赤チンは売上が伸びず赤字気味の営業を指す俗称。"
+    explanation: "タクシーが足りない場合に無線などで使う。"
   },
   {
     question: "「青タン」とは？",
